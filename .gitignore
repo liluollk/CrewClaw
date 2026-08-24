@@ -1,0 +1,27 @@
+# 密钥与依赖
+.env
+node_modules/
+# 运行时产物
+agent/auth.json
+agent/models-store.json
+agent/sessions/
+data/
+# 数据库备份（含真实数据，严禁入库）
+backup/
+web/dist/
+*.log
+# 工作区会话记忆（个人留档，不入库）
+.workbuddy/
+# one-off 占用
+*.tmp.json
+# IDE
+.idea/
+
+# 个人留档（不入库）
+/RESUME.md
+/IMPLEMENTATION_LOG.md
+/DEVELOPMENT_PLAN.md
+
+# 本地临时目录与构建状态（不入库）
+tmp/
+web/.tsbuildinfo

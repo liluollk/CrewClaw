@@ -1,0 +1,43 @@
+{
+  "name": "crewclaw",
+  "version": "1.0.0",
+  "description": "自托管、Pi Agent 驱动的多渠道智能体工作台（Pi Agent Runtime / Web+飞书+钉钉 / 工具与权限 / Workspace 记忆 / SSE 流式）",
+  "main": "dist/index.js",
+  "scripts": {
+    "hello": "tsx src/hello.ts",
+    "dev": "tsx src/index.ts",
+    "tool-demo": "tsx src/tool-demo.ts",
+    "mem-demo": "tsx src/mem-demo.ts",
+    "feishu-demo": "tsx src/feishu-demo.ts",
+    "persona-demo": "tsx src/persona-demo.ts",
+    "lifecycle-demo": "tsx src/agent-lifecycle-demo.ts",
+    "web:dev": "npm --prefix web run dev",
+    "web:build": "npm --prefix web run build",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "agent",
+    "pi-agent",
+    "self-hosted",
+    "chatbot"
+  ],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@earendil-works/pi-coding-agent": "^0.84.2",
+    "@hono/node-server": "^2.1.1",
+    "@larksuiteoapi/node-sdk": "^1.73.1",
+    "@types/better-sqlite3": "^9.6.0",
+    "better-sqlite3": "^13.0.3",
+    "dingtalk-stream-sdk-nodejs": "^2.0.4",
+    "dotenv": "^17.4.2",
+    "hono": "^4.13.5",
+    "tsx": "^4.23.13",
+    "typebox": "^1.3.7"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.11"
+  }
+}
