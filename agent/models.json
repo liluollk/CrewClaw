@@ -1,0 +1,19 @@
+{
+  "providers": {
+    "custom": {
+      "baseUrl": "https://your-openai-compatible-endpoint/v1",
+      "api": "openai-completions",
+      "models": [
+        {
+          "id": "your-model-id",
+          "name": "Custom Model",
+          "contextWindow": 131072,
+          "maxTokens": 16384,
+          "compat": {
+            "supportsDeveloperRole": false
+          }
+        }
+      ]
+    }
+  }
+}
