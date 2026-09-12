@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="智牧工作台">
+  <defs>
+    <linearGradient id="badge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FB923C"/>
+      <stop offset="1" stop-color="#EA580C"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#badge)"/>
+  <!-- 耳朵 -->
+  <path d="M17 27 L22 12 L31 24 Z" fill="#FFF7ED"/>
+  <path d="M47 27 L42 12 L33 24 Z" fill="#FFF7ED"/>
+  <!-- 脸 -->
+  <ellipse cx="32" cy="38" rx="17.5" ry="14.5" fill="#FFF7ED"/>
+  <!-- 眼睛 -->
+  <circle cx="25" cy="34" r="2.1" fill="#7C2D12"/>
+  <circle cx="39" cy="34" r="2.1" fill="#7C2D12"/>
+  <!-- 猪鼻 -->
+  <ellipse cx="32" cy="43" rx="8.5" ry="6" fill="#FDBA74"/>
+  <ellipse cx="29" cy="43" rx="1.5" ry="2.2" fill="#9A3412"/>
+  <ellipse cx="35" cy="43" rx="1.5" ry="2.2" fill="#9A3412"/>
+  <!-- 腮红 -->
+  <ellipse cx="19.5" cy="41" rx="2.6" ry="1.6" fill="#FED7AA" opacity="0.9"/>
+  <ellipse cx="44.5" cy="41" rx="2.6" ry="1.6" fill="#FED7AA" opacity="0.9"/>
+</svg>
