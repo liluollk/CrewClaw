@@ -6,12 +6,14 @@
  *  - 身份变更 → 网关会话全部重建，下一回合用新身份。
  */
 import 'dotenv/config';
+import path from 'node:path';
 import { serve } from '@hono/node-server';
 import { createApp, ensureDefaultProfile, DEFAULT_PROFILE_ID, DEFAULT_WORKSPACE_ID } from './server.js';
 import { getDatabase } from './core/database.js';
 import { buildPersonaPrompt } from './agent/persona.js';
 import { appendChatMessage, ensureWorkspaceProfile } from './core/models.js';
-import { createAgentFactory, type AgentFactory } from './agent/agent-runtime.js';
+import { createAgentFactory, PROJECT_ROOT, type AgentFactory } from './agent/agent-runtime.js';
+import { getProviderConfig } from './agent/provider-config.js';
 import { SessionRouter } from './channels/session-router.js';
 import { startGateway, buildChannelInstance, type GatewayChannel, type GatewayHandle } from './channels/gateway.js';
 import { allTools } from './farm/tools.js';
@@ -106,10 +108,12 @@ async function bootGateway(): Promise<void> {
     const channels = [...channelsFromEnv(systemWs), ...channelsFromWorkspaces()];
     const profileId = firstWs ? ensureWorkspaceProfile(db(), firstWs.id) : (ensureDefaultProfile(db()), DEFAULT_PROFILE_ID);
     const persona = buildPersonaPrompt(db(), profileId);
+    // 渠道回合与 Web 对话共用同一套模型接入配置（models.json/auth.json 优先，.env 兜底）
+    const provider = getProviderConfig(db(), path.join(PROJECT_ROOT, 'agent'));
     factory = await createAgentFactory({
-      baseUrl: process.env.MINICLAW_BASE_URL!,
-      apiKey: process.env.MINICLAW_API_KEY!,
-      modelId: process.env.MINICLAW_MODEL!,
+      baseUrl: provider.baseUrl,
+      apiKey: provider.apiKey,
+      modelId: provider.modelId,
       providerId: 'custom',
       systemPrompt: persona.fullPrompt,
       // 记忆工具默认挂部署者工作区；回合内 ALS 上下文优先（工作区渠道按归属取数）
