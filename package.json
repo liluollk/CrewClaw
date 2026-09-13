@@ -23,7 +23,6 @@
     "chatbot"
   ],
   "author": "",
-  "license": "MIT",
   "type": "module",
   "dependencies": {
     "@earendil-works/pi-coding-agent": "^0.84.2",
