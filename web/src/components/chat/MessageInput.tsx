@@ -63,7 +63,7 @@ export function MessageInput({
   };
 
   return (
-    <div className="mx-auto w-full max-w-4xl px-4 pb-3 pt-1">
+    <div className="mx-auto w-full max-w-[64rem] px-4 pb-3 pt-1">
       <div className="flex items-center gap-2 rounded-2xl border border-border bg-surface py-2 pl-4 pr-2 shadow-card focus-within:border-border/80">
         <textarea
           ref={textareaRef}

@@ -33,6 +33,14 @@ const app = createApp({
   },
 });
 
+// 自托管单进程兜底：流中断等瞬态异常只记日志，不带走整个服务
+process.on('uncaughtException', (err) => {
+  console.error('[process] uncaught exception:', err);
+});
+process.on('unhandledRejection', (err) => {
+  console.error('[process] unhandled rejection:', err);
+});
+
 const PORT = Number(process.env.PORT || 3000);
 serve({ fetch: app.fetch, port: PORT }, (info) => {
   console.log(`CrewClaw 工作台已启动: http://127.0.0.1:${info.port}`);

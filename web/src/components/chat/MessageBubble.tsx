@@ -96,7 +96,8 @@ export const MessageBubble = memo(
     const agentName = usePersonaStore((s) => s.name);
     const { mode: displayMode } = useDisplayMode();
 
-    const isAI = message.is_from_me && message.role === 'assistant';
+    // 以 role 为准：is_from_me 在不同来源（历史/乐观更新）语义不一致，不可靠
+    const isAI = message.role === 'assistant';
     const content = message.content;
     const time = parseDbTime(message.timestamp)
       .toLocaleString('zh-CN', {

@@ -322,8 +322,8 @@ export function MessageList({
         <div
           className={
             displayMode === 'compact'
-              ? 'mx-auto px-4 min-w-0'
-              : 'max-w-4xl mx-auto px-4 min-w-0'
+              ? 'mx-auto w-full max-w-[64rem] px-4 min-w-0'
+              : 'mx-auto w-full max-w-[64rem] px-4 min-w-0'
           }
         >
           {loading && hasMore && (
