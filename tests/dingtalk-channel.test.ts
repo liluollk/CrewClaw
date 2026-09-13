@@ -9,8 +9,8 @@
  *  5) mock 模式 connect/disconnect 状态迁移。
  */
 import { describe, expect, it, beforeEach, afterEach } from 'vitest';
-import { DingTalkChannel } from '../src/dingtalk-channel.js';
-import { channelManager, sessionKeyFor, type IMChannel } from '../src/channel.js';
+import { DingTalkChannel } from '../src/channels/dingtalk-channel.js';
+import { channelManager, sessionKeyFor, type IMChannel } from '../src/channels/channel.js';
 
 /** 契约完备性：任意 IMChannel 实现都必须具备最小集合 */
 function assertMinimalContract(c: IMChannel) {

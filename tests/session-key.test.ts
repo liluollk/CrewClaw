@@ -21,16 +21,16 @@ import {
   sessionKeyFor,
   ChannelManager,
   type IMChannel,
-} from '../src/channel.js';
-import { FeishuChannel } from '../src/feishu-channel.js';
-import { DingTalkChannel } from '../src/dingtalk-channel.js';
-import { initDatabase, resetDatabaseForTest } from '../src/database.js';
+} from '../src/channels/channel.js';
+import { FeishuChannel } from '../src/channels/feishu-channel.js';
+import { DingTalkChannel } from '../src/channels/dingtalk-channel.js';
+import { initDatabase, resetDatabaseForTest } from '../src/core/database.js';
 import {
   createAgentProfile,
   createWorkspace,
   recordRuntimeSession,
   getRuntimeSessionByKey,
-} from '../src/models.js';
+} from '../src/core/models.js';
 
 // ── build：canonical 形与向后兼容 ─────────────────────────────────────
 

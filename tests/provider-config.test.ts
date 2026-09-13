@@ -11,7 +11,7 @@ import {
   saveProviderConfig,
   probeProvider,
   ProviderConfigError,
-} from '../src/provider-config.js';
+} from '../src/agent/provider-config.js';
 
 describe('模型接入配置（Pi 原生文件）', () => {
   let agentDir: string;

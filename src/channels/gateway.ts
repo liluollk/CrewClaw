@@ -8,11 +8,11 @@
  */
 import { buildSessionKey } from './channel.js';
 import type { SessionRouter } from './session-router.js';
-import { runTurn } from './agent-runtime.js';
+import { runTurn } from '../agent/agent-runtime.js';
 import type { IMChannel } from './channel.js';
 import { FeishuChannel } from './feishu-channel.js';
 import { DingTalkChannel } from './dingtalk-channel.js';
-import { turnContext } from './runtime-context.js';
+import { turnContext } from '../core/runtime-context.js';
 
 /** 按凭据构建真实模式渠道实例（工作区自配渠道用；字段合法性由调用方校验） */
 export function buildChannelInstance(

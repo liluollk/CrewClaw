@@ -23,7 +23,7 @@ import {
 } from '@earendil-works/pi-coding-agent';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-export const PROJECT_ROOT = path.resolve(__dirname, '..');
+export const PROJECT_ROOT = path.resolve(__dirname, '../..');
 
 export interface AgentRuntimeOptions {
   /** 自定义接口模式：baseUrl + apiKey + modelId（经 registerProvider 动态注册） */

@@ -15,7 +15,7 @@ import type { Database as DatabaseType } from 'better-sqlite3';
 import path from 'node:path';
 import fs from 'node:fs';
 import os from 'node:os';
-import { initDatabase, resetDatabaseForTest } from '../src/database.js';
+import { initDatabase, resetDatabaseForTest } from '../src/core/database.js';
 import {
   createAgentProfile,
   getAgentProfile,
@@ -37,7 +37,7 @@ import {
   assertProductModelSchema,
   recordToolCall,
   listToolCalls,
-} from '../src/models.js';
+} from '../src/core/models.js';
 
 function createTempDb(): { db: DatabaseType; cleanup: () => void } {
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'miniclaw-model-test-'));

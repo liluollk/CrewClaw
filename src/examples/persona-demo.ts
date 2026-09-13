@@ -6,10 +6,10 @@
  * 运行：npm run persona-demo   （需要 .env 的 MINICLAW_BASE_URL/KEY/MODEL）
  */
 import 'dotenv/config';
-import { getDatabase } from './database.js';
-import { createAgentProfile, updateAgentProfile, getAgentProfile } from './models.js';
-import { buildPersonaPrompt } from './persona.js';
-import { createPiRuntime, runTurn } from './agent-runtime.js';
+import { getDatabase } from '../core/database.js';
+import { createAgentProfile, updateAgentProfile, getAgentProfile } from '../core/models.js';
+import { buildPersonaPrompt } from '../agent/persona.js';
+import { createPiRuntime, runTurn } from '../agent/agent-runtime.js';
 
 const ID = 'persona-demo-agent';
 

@@ -7,8 +7,8 @@
 import { Type } from 'typebox';
 import { defineTool, type ToolDefinition } from '@earendil-works/pi-coding-agent';
 import { createMemory, searchMemory, type MemoryKind, type MemoryScope } from './memory.js';
-import { getDatabase } from './database.js';
-import { turnContext } from './runtime-context.js';
+import { getDatabase } from '../core/database.js';
+import { turnContext } from '../core/runtime-context.js';
 
 const KIND_LABEL: Record<MemoryKind, string> = {
   fact: '事实',

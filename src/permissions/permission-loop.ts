@@ -6,7 +6,7 @@
  *    待确认动作属于瞬态，落库反而制造"重启后幽灵确认"。
  */
 import { randomUUID } from 'node:crypto';
-import { turnContext } from './runtime-context.js';
+import { turnContext } from '../core/runtime-context.js';
 
 export interface PendingAction {
   id: string;

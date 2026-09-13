@@ -8,14 +8,14 @@ import type { Database as DatabaseType } from 'better-sqlite3';
 import path from 'node:path';
 import fs from 'node:fs';
 import os from 'node:os';
-import { SessionRouter } from '../src/session-router.js';
-import { startGateway, type GatewayChannel, type GatewayMessage } from '../src/gateway.js';
-import { initDatabase, resetDatabaseForTest, CURRENT_SCHEMA_VERSION } from '../src/database.js';
-import { appendChatMessage, listChatMessages } from '../src/models.js';
-import { createMemoryTools } from '../src/memory-tools.js';
-import { permissionLoop } from '../src/permission-loop.js';
-import { turnContext } from '../src/runtime-context.js';
-import type { AgentSessionHandle } from '../src/agent-runtime.js';
+import { SessionRouter } from '../src/channels/session-router.js';
+import { startGateway, type GatewayChannel, type GatewayMessage } from '../src/channels/gateway.js';
+import { initDatabase, resetDatabaseForTest, CURRENT_SCHEMA_VERSION } from '../src/core/database.js';
+import { appendChatMessage, listChatMessages } from '../src/core/models.js';
+import { createMemoryTools } from '../src/memory/memory-tools.js';
+import { permissionLoop } from '../src/permissions/permission-loop.js';
+import { turnContext } from '../src/core/runtime-context.js';
+import type { AgentSessionHandle } from '../src/agent/agent-runtime.js';
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 async function waitFor(fn: () => boolean, timeoutMs = 3000): Promise<void> {

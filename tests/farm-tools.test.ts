@@ -5,15 +5,15 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import Database from 'better-sqlite3';
 import type { Database as DatabaseType } from 'better-sqlite3';
-import { initDatabase, resetDatabaseForTest, setDatabaseForTest } from '../src/database.js';
+import { initDatabase, resetDatabaseForTest, setDatabaseForTest } from '../src/core/database.js';
 import {
   createInspectionTaskTool,
   queryOperationSopTool,
   queryPenMetricsTool,
   recordHealthObservationTool,
-} from '../src/tools.js';
-import { listHealthObservations, listInspectionTasks, resetFarmState } from '../src/farm-domain.js';
-import { permissionLoop } from '../src/permission-loop.js';
+} from '../src/farm/tools.js';
+import { listHealthObservations, listInspectionTasks, resetFarmState } from '../src/farm/farm-domain.js';
+import { permissionLoop } from '../src/permissions/permission-loop.js';
 
 describe('养殖业务工具', () => {
   let db: DatabaseType;

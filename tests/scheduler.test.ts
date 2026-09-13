@@ -8,18 +8,18 @@ import type { Database as DatabaseType } from 'better-sqlite3';
 import path from 'node:path';
 import fs from 'node:fs';
 import os from 'node:os';
-import { initDatabase, resetDatabaseForTest } from '../src/database.js';
+import { initDatabase, resetDatabaseForTest } from '../src/core/database.js';
 import { createApp } from '../src/server.js';
-import { createWorkspace } from '../src/models.js';
-import { resetRateLimits } from '../src/auth.js';
-import { runSerial, clearSerialQueues } from '../src/serial.js';
+import { createWorkspace } from '../src/core/models.js';
+import { resetRateLimits } from '../src/core/auth.js';
+import { runSerial, clearSerialQueues } from '../src/core/serial.js';
 import {
   Scheduler,
   describeSchedule,
   nextRunFrom,
   parseSchedule,
   type ScheduledTaskRow,
-} from '../src/scheduler.js';
+} from '../src/tasks/scheduler.js';
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 async function waitFor(fn: () => boolean, timeoutMs = 3000): Promise<void> {

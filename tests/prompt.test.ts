@@ -20,7 +20,7 @@ import {
   MAX_SEGMENT_LENGTH,
   TOKEN_WARN_THRESHOLD,
   TOKEN_ERROR_THRESHOLD,
-} from '../src/prompt.js';
+} from '../src/agent/prompt.js';
 
 describe('P3 · 四段校验', () => {
   it('完整四段通过校验', () => {

@@ -10,7 +10,7 @@
  *  - 修复前（解绑）：waitForIdle 抛错被吞 → 顺序只剩 [prompt]
  */
 import { describe, expect, it } from 'vitest';
-import { streamTurn } from '../src/agent-runtime.js';
+import { streamTurn } from '../src/agent/agent-runtime.js';
 
 describe('P1 · streamTurn idle 等待（BUG1 回归）', () => {
   it('waitForIdle 依赖 this 时必须被绑定调用，且 prompt 在 idle 之后才发起', async () => {

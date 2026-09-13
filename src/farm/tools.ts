@@ -9,11 +9,11 @@
  */
 import { Type } from 'typebox';
 import { defineTool, type ToolDefinition } from '@earendil-works/pi-coding-agent';
-import { decidePermissions } from './permission.js';
-import { permissionLoop } from './permission-loop.js';
-import { recordToolCall } from './models.js';
-import { getDatabase } from './database.js';
-import { turnContext } from './runtime-context.js';
+import { decidePermissions } from '../permissions/permission.js';
+import { permissionLoop } from '../permissions/permission-loop.js';
+import { recordToolCall } from '../core/models.js';
+import { getDatabase } from '../core/database.js';
+import { turnContext } from '../core/runtime-context.js';
 import {
   createInspectionTask,
   evaluateHealthRisk,

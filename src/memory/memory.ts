@@ -13,8 +13,8 @@
  *  - **不是 RAG**：无向量检索、无 embedding，检索走关键词（FTS/LIKE）。
  */
 import crypto from 'node:crypto';
-import type { DatabaseType } from './database.js';
-import { getDatabase } from './database.js';
+import type { DatabaseType } from '../core/database.js';
+import { getDatabase } from '../core/database.js';
 
 // ── 类型 ──────────────────────────────────────────────────────────────
 

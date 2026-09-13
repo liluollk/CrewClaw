@@ -14,7 +14,7 @@
  *    解决"同一平台挂两个 Bot，同一条群消息分不清是谁的会话"的串扰问题。
  *  - build/parse 互为逆运算（canonical 形式往返一致），是纯字符串代数，可完全离线测试。
  */
-import type { StreamCallbacks } from './agent-runtime.js';
+import type { StreamCallbacks } from '../agent/agent-runtime.js';
 
 /** 渠道能力声明：区分基础(收发)与可选(流式/打字) */
 export interface ChannelCapabilities {

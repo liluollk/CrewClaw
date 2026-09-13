@@ -8,11 +8,11 @@ import type { Database as DatabaseType } from 'better-sqlite3';
 import path from 'node:path';
 import fs from 'node:fs';
 import os from 'node:os';
-import { initDatabase, resetDatabaseForTest } from '../src/database.js';
+import { initDatabase, resetDatabaseForTest } from '../src/core/database.js';
 import { createApp } from '../src/server.js';
-import { appendChatMessage, createAgentProfile, addWorkspaceMember } from '../src/models.js';
-import { createUser, createWebSession, issueCookieValue, resetRateLimits, SESSION_COOKIE } from '../src/auth.js';
-import { permissionLoop } from '../src/permission-loop.js';
+import { appendChatMessage, createAgentProfile, addWorkspaceMember } from '../src/core/models.js';
+import { createUser, createWebSession, issueCookieValue, resetRateLimits, SESSION_COOKIE } from '../src/core/auth.js';
+import { permissionLoop } from '../src/permissions/permission-loop.js';
 
 function createTempDb(): { db: DatabaseType; cleanup: () => void } {
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'miniclaw-server-test-'));

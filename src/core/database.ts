@@ -14,7 +14,7 @@ import fs from 'node:fs';
 import Database from 'better-sqlite3';
 import type { Database as DatabaseType } from 'better-sqlite3';
 export type { DatabaseType };
-import { PROJECT_ROOT } from './agent-runtime.js';
+import { PROJECT_ROOT } from '../agent/agent-runtime.js';
 
 // ── 版本常量 ──────────────────────────────────────────────────────────
 /** 当前代码期望的 schema 版本。每次新增迁移表/列时 +1。 */

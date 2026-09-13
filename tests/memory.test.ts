@@ -5,7 +5,7 @@
  */
 import { describe, expect, it } from 'vitest';
 import Database from 'better-sqlite3';
-import { initDatabase } from '../src/database.js';
+import { initDatabase } from '../src/core/database.js';
 import {
   createMemory,
   updateMemory,
@@ -16,7 +16,7 @@ import {
   listMemoryVersions,
   RevisionConflictError,
   IdempotencyConflictError,
-} from '../src/memory.js';
+} from '../src/memory/memory.js';
 
 function freshDb() {
   const db = new Database(':memory:');

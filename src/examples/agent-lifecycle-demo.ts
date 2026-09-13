@@ -19,7 +19,7 @@
  * 运行：npm run lifecycle-demo   （需要 .env 的 MINICLAW_BASE_URL/KEY/MODEL）
  */
 import 'dotenv/config';
-import { getDatabase } from './database.js';
+import { getDatabase } from '../core/database.js';
 import {
   createAgentProfile,
   createWorkspace,
@@ -28,15 +28,15 @@ import {
   recordToolCall,
   listToolCalls,
   appendChatMessage,
-} from './models.js';
-import { buildPersonaPrompt } from './persona.js';
-import { createAgentFactory, runTurn, type AgentFactory } from './agent-runtime.js';
-import { SessionRouter } from './session-router.js';
-import { buildSessionKey } from './channel.js';
-import { allTools } from './tools.js';
-import { createMemoryTools } from './memory-tools.js';
-import { turnContext } from './runtime-context.js';
-import { permissionLoop } from './permission-loop.js';
+} from '../core/models.js';
+import { buildPersonaPrompt } from '../agent/persona.js';
+import { createAgentFactory, runTurn, type AgentFactory } from '../agent/agent-runtime.js';
+import { SessionRouter } from '../channels/session-router.js';
+import { buildSessionKey } from '../channels/channel.js';
+import { allTools } from '../farm/tools.js';
+import { createMemoryTools } from '../memory/memory-tools.js';
+import { turnContext } from '../core/runtime-context.js';
+import { permissionLoop } from '../permissions/permission-loop.js';
 
 const AGENT_ID = 'lifecycle-demo-agent';
 const WORKSPACE_ID = 'ws-lifecycle';
@@ -128,7 +128,7 @@ async function main() {
 
   // 先写入一条记忆，让数字员工能检索到
   console.log('   预写入一条工作经验：复检任务确认规则');
-  const { createMemory } = await import('./memory.js');
+  const { createMemory } = await import('../memory/memory.js');
   createMemory(db, {
     workspaceId: WORKSPACE_ID,
     kind: 'decision',

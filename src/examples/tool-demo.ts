@@ -3,8 +3,8 @@
  * 用法：tsx src/tool-demo.ts '查询 A3 猪舍今天的生产指标，并判断是否需要复检'
  */
 import 'dotenv/config';
-import { createPiRuntime, runTurn } from './agent-runtime.js';
-import { allTools } from './tools.js';
+import { createPiRuntime, runTurn } from '../agent/agent-runtime.js';
+import { allTools } from '../farm/tools.js';
 
 async function main() {
   const prompt = process.argv.slice(2).join(' ') || '查询 A3 猪舍今天的生产指标，并判断是否需要复检';

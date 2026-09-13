@@ -8,19 +8,19 @@
 import 'dotenv/config';
 import { serve } from '@hono/node-server';
 import { createApp, ensureDefaultProfile, DEFAULT_PROFILE_ID, DEFAULT_WORKSPACE_ID } from './server.js';
-import { getDatabase } from './database.js';
-import { buildPersonaPrompt } from './persona.js';
-import { appendChatMessage, ensureWorkspaceProfile } from './models.js';
-import { createAgentFactory, type AgentFactory } from './agent-runtime.js';
-import { SessionRouter } from './session-router.js';
-import { startGateway, buildChannelInstance, type GatewayChannel, type GatewayHandle } from './gateway.js';
-import { allTools } from './tools.js';
-import { createMemoryTools } from './memory-tools.js';
-import { permissionLoop } from './permission-loop.js';
-import { decryptJson } from './secret-box.js';
-import { FeishuChannel } from './feishu-channel.js';
-import { DingTalkChannel } from './dingtalk-channel.js';
-import type { IMChannel } from './channel.js';
+import { getDatabase } from './core/database.js';
+import { buildPersonaPrompt } from './agent/persona.js';
+import { appendChatMessage, ensureWorkspaceProfile } from './core/models.js';
+import { createAgentFactory, type AgentFactory } from './agent/agent-runtime.js';
+import { SessionRouter } from './channels/session-router.js';
+import { startGateway, buildChannelInstance, type GatewayChannel, type GatewayHandle } from './channels/gateway.js';
+import { allTools } from './farm/tools.js';
+import { createMemoryTools } from './memory/memory-tools.js';
+import { permissionLoop } from './permissions/permission-loop.js';
+import { decryptJson } from './core/secret-box.js';
+import { FeishuChannel } from './channels/feishu-channel.js';
+import { DingTalkChannel } from './channels/dingtalk-channel.js';
+import type { IMChannel } from './channels/channel.js';
 
 const app = createApp({
   onPersonaChanged: () => {

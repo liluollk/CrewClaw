@@ -6,7 +6,7 @@ import {
   queryPenMetrics,
   recordHealthObservation,
   resetFarmState,
-} from '../src/farm-domain.js';
+} from '../src/farm/farm-domain.js';
 
 describe('养殖领域适配层', () => {
   beforeEach(() => resetFarmState());

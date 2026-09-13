@@ -7,13 +7,13 @@
  * 运行：npm run feishu-demo
  */
 import 'dotenv/config';
-import { createPiRuntime, runTurn } from './agent-runtime.js';
-import { FeishuChannel } from './feishu-channel.js';
-import { allTools } from './tools.js';
-import { channelManager, buildSessionKey } from './channel.js';
-import { getDatabase } from './database.js';
-import { buildPersonaPrompt } from './persona.js';
-import { ensureDefaultProfile, DEFAULT_PROFILE_ID } from './server.js';
+import { createPiRuntime, runTurn } from '../agent/agent-runtime.js';
+import { FeishuChannel } from '../channels/feishu-channel.js';
+import { allTools } from '../farm/tools.js';
+import { channelManager, buildSessionKey } from '../channels/channel.js';
+import { getDatabase } from '../core/database.js';
+import { buildPersonaPrompt } from '../agent/persona.js';
+import { ensureDefaultProfile, DEFAULT_PROFILE_ID } from '../server.js';
 
 async function main() {
   // accountId 显式配置时进入复合会话键；未配置则退化为旧格式（向后兼容）

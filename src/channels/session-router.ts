@@ -8,7 +8,7 @@
  *    同一个 session（Pi 会报 already processing）。
  *  - 身份变更 → clear() 释放全部会话，下一回合用新身份重建。
  */
-import type { AgentSessionHandle } from './agent-runtime.js';
+import type { AgentSessionHandle } from '../agent/agent-runtime.js';
 
 type SessionLike = AgentSessionHandle['session'];
 

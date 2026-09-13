@@ -7,25 +7,25 @@ import type { Database as DatabaseType } from 'better-sqlite3';
 import path from 'node:path';
 import fs from 'node:fs';
 import os from 'node:os';
-import { initDatabase, resetDatabaseForTest, setDatabaseForTest, CURRENT_SCHEMA_VERSION } from '../src/database.js';
+import { initDatabase, resetDatabaseForTest, setDatabaseForTest, CURRENT_SCHEMA_VERSION } from '../src/core/database.js';
 import { createApp } from '../src/server.js';
 import {
   createWorkspace,
   addWorkspaceMember,
   listWorkspaceMembers,
   getWorkspaceMembership,
-} from '../src/models.js';
+} from '../src/core/models.js';
 import {
   createUser,
   createWebSession,
   getSessionContext,
   resetRateLimits,
   setSessionWorkspace,
-} from '../src/auth.js';
-import { encryptJson, decryptJson, resetSecretKeyCache } from '../src/secret-box.js';
-import { createMemoryTools } from '../src/memory-tools.js';
-import { turnContext } from '../src/runtime-context.js';
-import { listRecallable } from '../src/memory.js';
+} from '../src/core/auth.js';
+import { encryptJson, decryptJson, resetSecretKeyCache } from '../src/core/secret-box.js';
+import { createMemoryTools } from '../src/memory/memory-tools.js';
+import { turnContext } from '../src/core/runtime-context.js';
+import { listRecallable } from '../src/memory/memory.js';
 
 function createTempDb(): { db: DatabaseType; cleanup: () => void } {
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'miniclaw-mu-test-'));

@@ -4,7 +4,7 @@
  * 运行：npx vitest run
  */
 import { describe, expect, it } from 'vitest';
-import { decidePermissions, modeForTool } from '../src/permission.js';
+import { decidePermissions, modeForTool } from '../src/permissions/permission.js';
 
 describe('PermissionGate 权限门', () => {
   it('只读工具直接放行，无需确认', () => {

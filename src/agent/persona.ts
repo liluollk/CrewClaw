@@ -4,8 +4,8 @@
  * 这是身份模型与 Prompt 体系的交汇：identity_hash 的输入（四段提示词）
  * 正是拼装系统提示词的原料——同一份数据，两处使用。
  */
-import { getAgentProfile } from './models.js';
-import type { DatabaseType } from './database.js';
+import { getAgentProfile } from '../core/models.js';
+import type { DatabaseType } from '../core/database.js';
 import { buildProfilePromptFromFields, type PromptAssemblyResult } from './prompt.js';
 
 export interface PersonaPrompt extends PromptAssemblyResult {

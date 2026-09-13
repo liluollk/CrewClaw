@@ -6,9 +6,9 @@
  */
 import { describe, expect, it } from 'vitest';
 import Database from 'better-sqlite3';
-import { initDatabase } from '../src/database.js';
-import { createAgentProfile, updateAgentProfile } from '../src/models.js';
-import { buildPersonaPrompt } from '../src/persona.js';
+import { initDatabase } from '../src/core/database.js';
+import { createAgentProfile, updateAgentProfile } from '../src/core/models.js';
+import { buildPersonaPrompt } from '../src/agent/persona.js';
 
 function freshDb() {
   const db = new Database(':memory:');

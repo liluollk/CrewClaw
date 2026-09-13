@@ -24,7 +24,7 @@ import {
   ensureColumn,
   assertSchema,
   resetDatabaseForTest,
-} from '../src/database.js';
+} from '../src/core/database.js';
 
 /** 每个测试用独立临时数据库文件，互不干扰 */
 function createTempDb(): { db: DatabaseType; cleanup: () => void } {

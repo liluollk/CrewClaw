@@ -128,26 +128,38 @@ npm test             # vitest：16 个文件 223 个用例
 ```text
 crewclaw/
 ├─ src/
-│  ├─ database.ts        # SQLite 版本化三层迁移（版本头/ensureColumn/断言/备份）
-│  ├─ models.ts          # Workspace/成员/Agent 绑定 + 三层身份模型 + 版本快照
-│  ├─ prompt.ts          # 四段 Prompt（契约/拼装/双层哈希/token 预算）
-│  ├─ memory.ts          # Workspace/Conversation Memory（四类知识/CAS/幂等/FTS/墓碑/修订史）
-│  ├─ persona.ts         # 集成桥：Profile→四段拼装→注入 Pi
-│  ├─ agent-runtime.ts   # Pi 调用封装（共享 ModelRuntime，按名建会话 + 压缩 + 身份注入）
-│  ├─ provider-config.ts # 模型接入：models.json/auth.json + 订阅套餐登录/启用
-│  ├─ session-router.ts  # 复合会话键 → 独立会话；同键串行、跨键并行、身份变更重建
-│  ├─ gateway.ts         # 渠道网关：常驻连接 + 群聊 @ 门控 + 入站路由/回发 + 历史落库
-│  ├─ channel.ts         # IMChannel 统一契约 + ChannelManager（多账号）+ 复合会话键
-│  ├─ feishu-channel.ts  # 飞书渠道适配器
-│  ├─ dingtalk-channel.ts# 钉钉渠道适配器
-│  ├─ scheduler.ts       # 定时任务调度器（游标+乐观锁领取/幂等物化/错过不补跑）
-│  ├─ permission.ts      # 权限门（readonly/ask/execute/fail-closed）
-│  ├─ permission-loop.ts # 写操作确认回路（待确认登记 → 用户裁决 → 执行）
-│  ├─ memory-tools.ts    # Agent 记忆工具（recall/remember）
-│  ├─ farm-domain.ts     # 养殖领域适配层（猪舍指标/养殖规范/异常观察/复检任务）
-│  ├─ tools.ts           # 养殖业务工具（query_pen_metrics / create_inspection_task 等）
+│  ├─ index.ts           # 启动入口（组装 server + 网关 + 调度器）
 │  ├─ server.ts          # Hono 应用工厂（SSE 对话 + 管理 API + 静态托管，可注入 db 测试）
-│  └─ index.ts           # 启动入口（组装 server + 网关 + 调度器）
+│  ├─ core/              # 平台底座
+│  │  ├─ database.ts     # SQLite 版本化三层迁移（版本头/ensureColumn/断言/备份）
+│  │  ├─ models.ts       # Workspace/成员/Agent 绑定 + 三层身份模型 + 版本快照
+│  │  ├─ auth.ts         # scrypt 密码 + HMAC cookie 会话 + 登录限流
+│  │  ├─ secret-box.ts   # AES-256-GCM 渠道凭据加密
+│  │  ├─ runtime-context.ts # 回合上下文（AsyncLocalStorage：工作区/会话/操作人）
+│  │  └─ serial.ts       # 同工作区串行队列
+│  ├─ agent/             # Agent 运行时
+│  │  ├─ agent-runtime.ts   # Pi 调用封装（共享 ModelRuntime，按名建会话 + 压缩 + 身份注入）
+│  │  ├─ prompt.ts       # 四段 Prompt（契约/拼装/双层哈希/token 预算）
+│  │  ├─ persona.ts      # 集成桥：Profile→四段拼装→注入 Pi
+│  │  └─ provider-config.ts # 模型接入：models.json/auth.json + 订阅套餐登录/启用
+│  ├─ memory/            # 团队与会话记忆
+│  │  ├─ memory.ts       # 四类知识/CAS/幂等/FTS/墓碑/修订史
+│  │  └─ memory-tools.ts # Agent 记忆工具（recall/remember）
+│  ├─ channels/          # 多渠道接入
+│  │  ├─ channel.ts      # IMChannel 统一契约 + ChannelManager（多账号）+ 复合会话键
+│  │  ├─ session-router.ts  # 复合会话键 → 独立会话；同键串行、跨键并行、身份变更重建
+│  │  ├─ gateway.ts      # 渠道网关：常驻连接 + 群聊 @ 门控 + 入站路由/回发 + 历史落库
+│  │  ├─ feishu-channel.ts  # 飞书渠道适配器
+│  │  └─ dingtalk-channel.ts # 钉钉渠道适配器
+│  ├─ permissions/       # 权限与确认
+│  │  ├─ permission.ts   # 权限门（readonly/ask/execute/fail-closed）
+│  │  └─ permission-loop.ts # 写操作确认回路（待确认登记 → 用户裁决 → 执行）
+│  ├─ tasks/
+│  │  └─ scheduler.ts    # 定时任务调度器（游标+乐观锁领取/幂等物化/错过不补跑）
+│  ├─ farm/              # 养殖场景适配层
+│  │  ├─ farm-domain.ts  # 猪舍指标/养殖规范/异常观察/复检任务（内置模拟数据）
+│  │  └─ tools.ts        # 业务工具（query_pen_metrics / create_inspection_task 等）
+│  └─ examples/          # 联调脚本（hello/tool/mem/persona/lifecycle/feishu）
 ├─ web/                  # React 19 + Vite 前端（构建产物 web/dist 由后端托管）
 ├─ tests/                # vitest（16 文件 223 用例）
 ├─ docs/                 # 设计与实施记录、项目截图

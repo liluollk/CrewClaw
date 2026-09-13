@@ -18,7 +18,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { Database as DatabaseType } from 'better-sqlite3';
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const DATA_DIR = path.join(ROOT, 'data');
 
 export const SESSION_TTL_MS = 30 * 24 * 60 * 60 * 1000;

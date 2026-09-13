@@ -16,7 +16,7 @@ import { fileURLToPath } from 'node:url';
 import { Hono } from 'hono';
 import type { Context } from 'hono';
 import type { Database as DatabaseType } from 'better-sqlite3';
-import { getDatabase } from './database.js';
+import { getDatabase } from './core/database.js';
 import {
   createAgentProfile,
   appendChatMessage,
@@ -33,18 +33,18 @@ import {
   listChatMessages,
   updateAgentProfile,
   getPromptVersionSnapshots,
-} from './models.js';
-import { validateSegments } from './prompt.js';
-import { buildPersonaPrompt } from './persona.js';
+} from './core/models.js';
+import { validateSegments } from './agent/prompt.js';
+import { buildPersonaPrompt } from './agent/persona.js';
 import { ModelRuntime } from '@earendil-works/pi-coding-agent';
-import { PROJECT_ROOT } from './agent-runtime.js';
+import { PROJECT_ROOT } from './agent/agent-runtime.js';
 import {
   createPiRuntime,
   createAgentFactory,
   runTurn,
   streamTurn,
   type AgentRuntimeOptions,
-} from './agent-runtime.js';
+} from './agent/agent-runtime.js';
 import {
   MEMORY_KINDS,
   createMemory,
@@ -56,13 +56,13 @@ import {
   RevisionConflictError,
   IdempotencyConflictError,
   type MemoryKind,
-} from './memory.js';
-import { createMemoryTools } from './memory-tools.js';
-import { permissionLoop } from './permission-loop.js';
-import { allTools } from './tools.js';
-import { buildSessionKey, parseSessionKey } from './channel.js';
-import { turnContext } from './runtime-context.js';
-import { decryptJson, encryptJson } from './secret-box.js';
+} from './memory/memory.js';
+import { createMemoryTools } from './memory/memory-tools.js';
+import { permissionLoop } from './permissions/permission-loop.js';
+import { allTools } from './farm/tools.js';
+import { buildSessionKey, parseSessionKey } from './channels/channel.js';
+import { turnContext } from './core/runtime-context.js';
+import { decryptJson, encryptJson } from './core/secret-box.js';
 import {
   getProviderConfig,
   saveProviderConfig,
@@ -71,10 +71,10 @@ import {
   getAccessConfig,
   saveAccessConfig,
   PLAN_PROVIDERS,
-} from './provider-config.js';
+} from './agent/provider-config.js';
 import crypto from 'node:crypto';
-import { Scheduler, describeSchedule, parseSchedule, nextRunFrom, type ScheduledTaskRow } from './scheduler.js';
-import { runSerial } from './serial.js';
+import { Scheduler, describeSchedule, parseSchedule, nextRunFrom, type ScheduledTaskRow } from './tasks/scheduler.js';
+import { runSerial } from './core/serial.js';
 import {
   SESSION_COOKIE,
   SESSION_TTL_MS,
@@ -91,7 +91,7 @@ import {
   issueCookieValue,
   verifyCookieValue,
   type AuthUser,
-} from './auth.js';
+} from './core/auth.js';
 
 /** Web 工作台默认身份 Profile（遗留全局身份；多用户后每个工作区绑定自己的 Profile） */
 export const DEFAULT_PROFILE_ID = 'web-default';

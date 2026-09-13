@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { createPiRuntime, runTurn } from './agent-runtime.js';
+import { createPiRuntime, runTurn } from '../agent/agent-runtime.js';
 
 async function main() {
   const { session } = await createPiRuntime({

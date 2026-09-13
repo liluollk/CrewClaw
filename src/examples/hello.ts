@@ -3,7 +3,7 @@
  * 现改用 src/agent-runtime.ts 的 createPiRuntime（动态注册 provider + env key 注入）。
  */
 import 'dotenv/config';
-import { createPiRuntime, runTurn } from './agent-runtime.js';
+import { createPiRuntime, runTurn } from '../agent/agent-runtime.js';
 
 async function main() {
   const { session } = await createPiRuntime({
