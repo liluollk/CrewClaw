@@ -7,7 +7,7 @@
   <img src="docs/screenshots/workspace.png" alt="工作台" width="49%" />
 </p>
 
-Agent 执行内核复用开源 [Pi Agent Runtime](https://www.npmjs.com/package/@earendil-works/pi-coding-agent)（`@earendil-works/pi-coding-agent`）；平台层——认证、多用户工作区、身份建模、渠道网关、记忆、权限确认、定时任务、模型接入——全部在本仓库实现。
+Agent 执行内核复用开源 [Pi Agent Runtime](https://www.npmjs.com/package/@earendil-works/pi-coding-agent)（`@earendil-works/pi-coding-agent`）；平台层——认证、多用户工作区、身份建模、渠道网关、记忆、权限确认、定时任务、模型接入——全部在本仓库实现。项目由本人独立完成：架构设计、后端、前端与场景建模均为一人产出，配 223 个自动化测试保障。
 
 ## 功能
 
@@ -76,45 +76,6 @@ Web 工作台（SSE）──────┐
 → 任务结果回写工作区，供后续日报继续使用
 ```
 
-## 快速开始
-
-```bash
-# 1. 安装依赖
-npm install
-npm --prefix web install
-
-# 2. 配置模型接入（二选一，也可启动后在 Web 设置页配置）
-cp .env.example .env   # 填 OpenAI 兼容接口的 baseUrl / key / 模型名
-
-# 3. 构建前端
-npm run web:build
-
-# 4. 启动
-npm run dev            # http://127.0.0.1:3000，注册账号即可使用
-```
-
-### 接入飞书 / 钉钉
-
-在飞书开放平台创建应用（事件订阅选「长连接」）或在钉钉开放平台创建企业内部机器人（Stream 模式），把凭据填入 `.env` 或在 Web 设置页按工作区配置，重启后网关自动常驻连接：
-
-```bash
-FEISHU_APP_ID=xxx
-FEISHU_APP_SECRET=xxx
-DINGTALK_CLIENT_ID=xxx
-DINGTALK_CLIENT_SECRET=xxx
-```
-
-群聊默认要求 @机器人才响应（`GROUP_REQUIRE_MENTION=0` 可关闭）。
-
-### 联调脚本
-
-```bash
-npm run hello        # 进程内直调 Pi，一句问答
-npm run tool-demo -- '查询 A3 猪舍今天的生产指标，并判断是否需要复检'
-npm run tool-demo -- '为 A3 创建复检任务'   # 应被权限门拦截，需确认
-npm run mem-demo     # 多轮记忆：记住名字 → 第二问答名字
-```
-
 ## 测试
 
 ```bash
@@ -177,7 +138,3 @@ crewclaw/
 | 模拟业务数据 | 猪场业务数据为内置模拟数据（`src/farm-domain.ts`），不接入真实猪场 ERP/MES/物联网设备 |
 | 业务安全 | Agent 只做异常识别、规范检索和任务建议；不自动诊断疾病、不开具处方、不执行用药 |
 | 后置项 | Docker 部署、容器沙箱、跨组织多租户隔离、向量检索（刻意后置） |
-
-## License
-
-MIT
